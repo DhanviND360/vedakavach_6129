@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veda Kavach | NSSO Safe Data Processor | Govt of India</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js for Analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .fade-in { animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #2563eb;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #2563eb;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- ================= VIEW 1: LANDING PAGE ================= -->
+    <div id="landing-view" class="min-h-screen flex flex-col">
+        <!-- Top Strip -->
+        <div class="h-2 w-full bg-gradient-to-r from-orange-500 via-white to-green-600"></div>
+        
+        <!-- Header -->
+        <header class="bg-white shadow-sm border-b border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem" class="h-10 w-auto">
+                    <div class="border-l border-gray-300 pl-4 hidden sm:block">
+                        <h1 class="text-sm font-bold text-gray-900 uppercase tracking-wide">Ministry of Statistics & <br>Programme Implementation</h1>
+                        <p class="text-xs text-gray-500">Government of India</p>
+                    </div>
+                    
+                    <!-- Veda Kavach Logo Block -->
+                    <div class="flex items-center gap-2 border-l border-gray-300 pl-4 ml-2">
+                        <div class="bg-blue-900 text-white p-1.5 rounded-lg">
+                            <i data-lucide="shield" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="block text-lg font-extrabold text-blue-900 leading-none tracking-tight">Veda Kavach</span>
+                            <span class="block text-[10px] text-blue-600 font-medium uppercase tracking-wider">Data Security Shield</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:flex gap-4 text-sm font-medium text-gray-600">
+                    <span class="flex items-center gap-1"><i data-lucide="globe" class="w-4 h-4"></i> English</span>
+                    <span class="flex items-center gap-1"><i data-lucide="log-in" class="w-4 h-4"></i> Official Login</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <main class="flex-1 flex items-center bg-white relative overflow-hidden">
+            <div class="absolute right-0 top-0 w-1/2 h-full bg-blue-50/50 skew-x-12 transform origin-top-right z-0"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 space-y-6 fade-in">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold uppercase tracking-wider">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i> Veda Kavach Initiative
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+                        Secure Anonymization <br>
+                        <span class="text-blue-700">for Public Data Release</span>
+                    </h2>
+                    <p class="text-lg text-slate-600 leading-relaxed max-w-lg">
+                        <strong>Veda Kavach</strong> is an advanced statistical disclosure control tool for NSS unit-level data. 
+                        Evaluate re-identification risk and apply K-Anonymity & Differential Privacy 
+                        in real-time before dissemination.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <button onclick="switchView('app')" class="px-8 py-4 bg-blue-700 hover:bg-blue-800 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                            Try Veda Kavach Live <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </button>
+                        <button class="px-8 py-4 bg-white border border-gray-300 text-gray-700 font-bold rounded-lg hover:bg-gray-50 transition flex items-center justify-center gap-2">
+                            <i data-lucide="file-text" class="w-5 h-5"></i> Read Methodology
+                        </button>
+                    </div>
+
+                    <div class="pt-8 flex items-center gap-6 text-sm text-gray-500 font-medium">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i> K-Anonymity
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i> Differential Privacy
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i> L-Diversity
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2 relative fade-in">
+                    <div class="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 relative z-10">
+                        <!-- Mock Dashboard Preview in CSS -->
+                        <div class="flex items-center justify-between mb-4 border-b pb-2">
+                            <div class="h-4 w-24 bg-gray-200 rounded"></div>
+                            <div class="flex gap-2">
+                                <div class="h-4 w-4 bg-red-400 rounded-full"></div>
+                                <div class="h-4 w-4 bg-yellow-400 rounded-full"></div>
+                                <div class="h-4 w-4 bg-green-400 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="h-8 w-full bg-blue-50 rounded flex items-center px-4"><span class="w-1/4 h-2 bg-blue-200 rounded"></span></div>
+                            <div class="h-8 w-full bg-gray-50 rounded flex items-center px-4"><span class="w-2/3 h-2 bg-gray-200 rounded"></span></div>
+                            <div class="h-8 w-full bg-gray-50 rounded flex items-center px-4"><span class="w-1/2 h-2 bg-gray-200 rounded"></span></div>
+                            <div class="h-32 w-full bg-gray-100 rounded mt-4 flex items-center justify-center text-gray-400 text-xs">Analytics Preview</div>
+                        </div>
+                    </div>
+                    <!-- Decorative blobs -->
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-orange-100 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob"></div>
+                    <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-green-100 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-2000"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ================= VIEW 2: APP DASHBOARD ================= -->
+    <div id="app-view" class="hidden min-h-screen flex-col bg-slate-50">
+        <!-- App Header -->
+        <header class="bg-blue-900 text-white shadow-md sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="bg-white/10 p-2 rounded-full cursor-pointer hover:bg-white/20 transition" onclick="switchView('landing')">
+                        <i data-lucide="chevron-left" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <div class="w-px h-8 bg-white/20"></div>
+                    <div>
+                        <h1 class="font-bold text-lg leading-none flex items-center gap-2">
+                            <i data-lucide="shield" class="w-4 h-4 text-blue-300"></i> Veda Kavach
+                        </h1>
+                        <p class="text-xs text-blue-200">NSSO Safe Data Processor</p>
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <button id="tab-data" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg bg-white text-blue-900 shadow-sm" onclick="switchTab('data')">
+                        Process Data
+                    </button>
+                    <button id="tab-report" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg text-blue-100 hover:bg-blue-800" onclick="switchTab('report')">
+                        Risk Report
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-6 flex flex-col lg:flex-row gap-6">
+            
+            <!-- LEFT SIDEBAR: CONTROLS -->
+            <div class="lg:w-1/4 space-y-6">
+                <!-- Configuration Panel -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                    <h2 class="font-bold flex items-center gap-2 mb-6 text-slate-800 border-b pb-3">
+                        <i data-lucide="settings" class="w-5 h-5 text-blue-600"></i> Anonymization Logic
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <!-- Suppression -->
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                            <label class="flex items-center justify-between cursor-pointer">
+                                <div>
+                                    <span class="block text-sm font-semibold text-slate-700">Suppression</span>
+                                    <span class="text-xs text-slate-500">Mask Direct IDs</span>
+                                </div>
+                                <input type="checkbox" id="cfg-suppress" class="w-5 h-5 accent-blue-600">
+                            </label>
+                        </div>
+
+                        <!-- Generalization -->
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="block text-sm font-semibold text-slate-700">K-Anonymity (Age)</span>
+                                <span id="age-val" class="text-xs font-mono bg-blue-100 text-blue-700 px-2 rounded">Exact</span>
+                            </div>
+                            <input type="range" id="cfg-age" min="0" max="20" step="5" value="0" class="w-full accent-blue-600 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                            <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+                                <span>Specific</span>
+                                <span>Generalized</span>
+                            </div>
+                        </div>
+
+                        <!-- Perturbation -->
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-100 space-y-3">
+                            <label class="flex items-center justify-between cursor-pointer">
+                                <div>
+                                    <span class="block text-sm font-semibold text-slate-700">Differential Privacy</span>
+                                    <span class="text-xs text-slate-500">Add Noise to Income</span>
+                                </div>
+                                <input type="checkbox" id="cfg-noise" class="w-5 h-5 accent-blue-600">
+                            </label>
+                            <div class="h-px bg-slate-200"></div>
+                            <label class="flex items-center justify-between cursor-pointer">
+                                <div>
+                                    <span class="block text-sm font-semibold text-slate-700">Top/Bottom Coding</span>
+                                    <span class="text-xs text-slate-500">Cap Extremes</span>
+                                </div>
+                                <input type="checkbox" id="cfg-cap" class="w-5 h-5 accent-blue-600">
+                            </label>
+                        </div>
+                        
+                         <!-- Location Masking -->
+                         <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                            <label class="flex items-center justify-between cursor-pointer">
+                                <div>
+                                    <span class="block text-sm font-semibold text-slate-700">Mask Location</span>
+                                    <span class="text-xs text-slate-500">Hide District Code</span>
+                                </div>
+                                <input type="checkbox" id="cfg-loc" class="w-5 h-5 accent-blue-600">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <button onclick="runProcess()" id="btn-process" class="w-full bg-blue-700 text-white py-3 rounded-lg font-semibold shadow hover:bg-blue-800 transition flex items-center justify-center gap-2">
+                            <i data-lucide="lock" class="w-4 h-4"></i> Apply Encryption
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Live Metrics Widget -->
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Risk Evaluation Engine</h3>
+                    
+                    <div class="space-y-5">
+                        <!-- Risk Meter -->
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-sm text-slate-600">Re-Identification Risk</span>
+                                <span id="metric-risk-val" class="font-bold text-sm text-red-600">100%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                                <div id="metric-risk-bar" class="h-full bg-red-500 transition-all duration-700" style="width: 100%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Utility Meter -->
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-sm text-slate-600">Data Utility</span>
+                                <span id="metric-util-val" class="font-bold text-sm text-blue-600">100%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                                <div id="metric-util-bar" class="h-full bg-blue-500 transition-all duration-700" style="width: 100%"></div>
+                            </div>
+                        </div>
+
+                        <div id="status-badge" class="mt-4 p-2 bg-red-50 text-red-700 text-xs font-bold text-center rounded border border-red-100">
+                            CRITICAL RISK - DO NOT RELEASE
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT PANEL: CONTENT -->
+            <div class="lg:w-3/4 flex flex-col gap-6">
+                
+                <!-- TAB 1: DATA TABLE -->
+                <div id="panel-data" class="flex-col h-full bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex">
+                    <div class="p-4 border-b border-slate-200 flex flex-col sm:flex-row justify-between items-center bg-slate-50 gap-3">
+                        <div class="flex gap-4">
+                            <div class="flex items-center gap-2">
+                                <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                                <span class="text-xs font-bold text-slate-600">Original (Unsafe)</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                                <span class="text-xs font-bold text-slate-600">Processed (Safe)</span>
+                            </div>
+                        </div>
+                        <span class="text-xs text-slate-400 bg-white px-2 py-1 rounded border">Showing Live Sample</span>
+                    </div>
+
+                    <div class="overflow-x-auto flex-1">
+                        <table class="w-full text-sm text-left">
+                            <thead class="bg-slate-50 text-slate-500 font-semibold border-b border-slate-200">
+                                <tr>
+                                    <th class="p-3 w-24">HH_ID</th>
+                                    <th class="p-3">State</th>
+                                    <th class="p-3">Dist Code</th>
+                                    <th class="p-3">Age (Head)</th>
+                                    <th class="p-3">Religion</th>
+                                    <th class="p-3">Social Grp</th>
+                                    <th class="p-3 text-right">MPCE (₹)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="data-tbody" class="divide-y divide-slate-100">
+                                <!-- Data rows injected by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TAB 2: REPORT & CHARTS -->
+                <div id="panel-report" class="hidden flex-col gap-6 fade-in">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center">
+                            <div class="text-slate-400 text-xs font-bold uppercase mb-2">Uniqueness</div>
+                            <div id="rpt-unique" class="text-3xl font-bold text-slate-800">0</div>
+                            <div class="text-xs text-slate-500 mt-1">Rows identifiable</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center">
+                            <div class="text-slate-400 text-xs font-bold uppercase mb-2">Suppression Ratio</div>
+                            <div id="rpt-suppressed" class="text-3xl font-bold text-slate-800">0%</div>
+                            <div class="text-xs text-slate-500 mt-1">Cells masked</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center">
+                            <div class="text-slate-400 text-xs font-bold uppercase mb-2">Safe Level</div>
+                            <div id="rpt-level" class="text-3xl font-bold text-red-600">LOW</div>
+                            <div class="text-xs text-slate-500 mt-1">Overall Grading</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                        <h3 class="font-bold text-slate-800 mb-6">Risk Analysis (K-Anonymity Distribution)</h3>
+                        <div class="h-64 w-full flex justify-center">
+                            <canvas id="riskChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-900 text-white p-6 rounded-xl shadow-lg flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <div>
+                            <h3 class="font-bold text-lg">Ready to Publish?</h3>
+                            <p class="text-blue-200 text-sm">Download the anonymized dataset in CSV format.</p>
+                        </div>
+                        <button class="bg-white text-blue-900 px-6 py-3 rounded-lg font-bold hover:bg-blue-50 transition flex items-center gap-2">
+                            <i data-lucide="download" class="w-5 h-5"></i> Export Secure CSV
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- 1. STATE & DATA GENERATION ---
+        let rawData = [];
+        let processedData = [];
+        let config = {
+            suppressIds: false,
+            ageBinSize: 0,
+            addNoise: false,
+            capIncome: false,
+            maskDistrict: false
+        };
+        let metrics = { riskScore: 100, utilityScore: 100, uniqueCount: 0 };
+        let chartInstance = null;
+
+        function generateData(count = 20) {
+            const states = ['Maharashtra', 'Karnataka', 'Uttar Pradesh', 'Bihar', 'Tamil Nadu'];
+            const religions = ['Hinduism', 'Islam', 'Christianity', 'Sikhism', 'Jainism'];
+            const socialGroups = ['SC', 'ST', 'OBC', 'Others'];
+            
+            return Array.from({ length: count }, (_, i) => ({
+                id: `HH-${10000 + i}`,
+                state: states[Math.floor(Math.random() * states.length)],
+                district_code: `${Math.floor(Math.random() * 50) + 10}`,
+                head_age: Math.floor(Math.random() * 60) + 20,
+                religion: religions[Math.floor(Math.random() * religions.length)],
+                social_group: socialGroups[Math.floor(Math.random() * socialGroups.length)],
+                mpce: Math.floor(Math.random() * 20000) + 2000
+            }));
+        }
+
+        // --- 2. ANONYMIZATION ALGORITHMS ---
+        function applyAnonymization(data) {
+            return data.map(row => {
+                const newRow = { ...row };
+
+                // Suppression
+                if (config.suppressIds) {
+                    newRow.id = '*****';
+                }
+
+                // Generalization (Age)
+                if (config.ageBinSize > 0) {
+                    const bin = parseInt(config.ageBinSize);
+                    const lower = Math.floor(row.head_age / bin) * bin;
+                    newRow.head_age = `${lower}-${lower + bin}`;
+                }
+
+                // Masking Location
+                if (config.maskDistrict) {
+                    newRow.district_code = '**';
+                }
+
+                // Top/Bottom Coding
+                if (config.capIncome) {
+                    if (newRow.mpce > 15000) newRow.mpce = '> 15000';
+                    else if (newRow.mpce < 3000) newRow.mpce = '< 3000';
+                }
+
+                // Differential Privacy (Noise)
+                if (config.addNoise && typeof newRow.mpce === 'number') {
+                    // Simple Laplace-like noise
+                    const noise = (Math.random() - 0.5) * (newRow.mpce * 0.15); 
+                    newRow.mpce = Math.round(newRow.mpce + noise);
+                }
+
+                return newRow;
+            });
+        }
+
+        // --- 3. METRICS ENGINE ---
+        function calculateMetrics(raw, proc) {
+            let changedCells = 0;
+            let totalCells = raw.length * 5; // Simplified cell count
+
+            const signatureCounts = {};
+            
+            proc.forEach((row, idx) => {
+                // Risk: Check Uniqueness (Quasi-identifiers: State, Age, Religion, Group, Dist)
+                const signature = `${row.state}|${row.head_age}|${row.religion}|${row.social_group}|${row.district_code}`;
+                signatureCounts[signature] = (signatureCounts[signature] || 0) + 1;
+
+                // Utility: Check Differences
+                const r = raw[idx];
+                if (String(r.id) !== String(row.id)) changedCells++;
+                if (String(r.district_code) !== String(row.district_code)) changedCells++;
+                if (String(r.head_age) !== String(row.head_age)) changedCells++;
+                if (String(r.mpce) !== String(row.mpce)) changedCells++;
+            });
+
+            const uniqueSignatures = Object.values(signatureCounts).filter(count => count === 1).length;
+            const riskScore = (uniqueSignatures / raw.length) * 100;
+            const utilityScore = Math.max(0, 100 - ((changedCells / (raw.length * 4)) * 100)); // normalized
+
+            return { riskScore, utilityScore, uniqueCount: uniqueSignatures };
+        }
+
+        // --- 4. UI RENDERER ---
+        function renderTable() {
+            const tbody = document.getElementById('data-tbody');
+            tbody.innerHTML = '';
+
+            rawData.forEach((raw, idx) => {
+                const proc = processedData[idx];
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50 transition border-b border-slate-50 last:border-0";
+                
+                // Helper to check diff
+                const isDiff = (key) => String(raw[key]) !== String(proc[key]);
+                const cellClass = (modified) => modified ? "text-green-600 font-bold bg-green-50" : "text-slate-600";
+
+                tr.innerHTML = `
+                    <td class="p-3 font-mono text-xs">
+                        <div class="text-red-300 text-[10px] line-through ${isDiff('id') ? '' : 'hidden'}">${raw.id}</div>
+                        <div class="${isDiff('id') ? 'text-green-600 font-bold' : 'text-slate-700'}">${proc.id}</div>
+                    </td>
+                    <td class="p-3 text-slate-700">${proc.state}</td>
+                    <td class="p-3 font-mono">
+                         <span class="${cellClass(isDiff('district_code'))} px-1 rounded">${proc.district_code}</span>
+                    </td>
+                    <td class="p-3">
+                        <div class="flex flex-col">
+                           <span class="text-[10px] text-red-300 line-through ${isDiff('head_age') ? '' : 'hidden'}">${raw.head_age}</span>
+                           <span class="${cellClass(isDiff('head_age'))} px-1 rounded inline-block">${proc.head_age}</span>
+                        </div>
+                    </td>
+                    <td class="p-3 text-slate-600">${proc.religion}</td>
+                    <td class="p-3 text-slate-600">${proc.social_group}</td>
+                    <td class="p-3 text-right font-mono">
+                        <div class="flex flex-col items-end">
+                           <span class="text-[10px] text-red-300 line-through ${isDiff('mpce') ? '' : 'hidden'}">₹${raw.mpce}</span>
+                           <span class="${cellClass(isDiff('mpce'))} px-1 rounded inline-block">
+                             ${typeof proc.mpce === 'number' ? '₹' + proc.mpce : proc.mpce}
+                           </span>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderMetrics() {
+            // Bars
+            document.getElementById('metric-risk-val').innerText = metrics.riskScore.toFixed(1) + '%';
+            document.getElementById('metric-risk-bar').style.width = metrics.riskScore + '%';
+            document.getElementById('metric-risk-bar').className = `h-full transition-all duration-700 ${metrics.riskScore > 50 ? 'bg-red-500' : (metrics.riskScore > 20 ? 'bg-yellow-500' : 'bg-green-500')}`;
+            document.getElementById('metric-risk-val').className = `font-bold text-sm ${metrics.riskScore > 50 ? 'text-red-600' : (metrics.riskScore > 20 ? 'text-yellow-600' : 'text-green-600')}`;
+
+            document.getElementById('metric-util-val').innerText = metrics.utilityScore.toFixed(1) + '%';
+            document.getElementById('metric-util-bar').style.width = metrics.utilityScore + '%';
+
+            // Status Badge
+            const badge = document.getElementById('status-badge');
+            if (metrics.riskScore > 50) {
+                badge.className = "mt-4 p-2 bg-red-50 text-red-700 text-xs font-bold text-center rounded border border-red-100";
+                badge.innerText = "CRITICAL RISK - DO NOT RELEASE";
+            } else if (metrics.riskScore > 20) {
+                badge.className = "mt-4 p-2 bg-yellow-50 text-yellow-700 text-xs font-bold text-center rounded border border-yellow-100";
+                badge.innerText = "MODERATE RISK - REVIEW REQUIRED";
+            } else {
+                badge.className = "mt-4 p-2 bg-green-50 text-green-700 text-xs font-bold text-center rounded border border-green-100";
+                badge.innerText = "SAFE FOR PUBLIC RELEASE";
+            }
+
+            // Report Tab Metrics
+            document.getElementById('rpt-unique').innerText = metrics.uniqueCount;
+            document.getElementById('rpt-suppressed').innerText = (100 - metrics.utilityScore).toFixed(0) + '%';
+            
+            const rptLevel = document.getElementById('rpt-level');
+            if(metrics.riskScore < 20) { rptLevel.innerText = "HIGH"; rptLevel.className = "text-3xl font-bold text-green-600"; }
+            else if(metrics.riskScore < 50) { rptLevel.innerText = "MED"; rptLevel.className = "text-3xl font-bold text-yellow-600"; }
+            else { rptLevel.innerText = "LOW"; rptLevel.className = "text-3xl font-bold text-red-600"; }
+
+            updateChart();
+        }
+
+        function updateChart() {
+            if (chartInstance) chartInstance.destroy();
+            
+            const ctx = document.getElementById('riskChart').getContext('2d');
+            const safeCount = rawData.length - metrics.uniqueCount;
+            
+            chartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Unique (Risky)', 'Safe (K-Anon)'],
+                    datasets: [{
+                        data: [metrics.uniqueCount, safeCount],
+                        backgroundColor: ['#ef4444', '#22c55e'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+        }
+
+        // --- 5. CONTROLLER ---
+        
+        function runProcess() {
+            // Show loading state on button
+            const btn = document.getElementById('btn-process');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Processing...`;
+            
+            // Collect Config
+            config.suppressIds = document.getElementById('cfg-suppress').checked;
+            config.ageBinSize = document.getElementById('cfg-age').value;
+            config.addNoise = document.getElementById('cfg-noise').checked;
+            config.capIncome = document.getElementById('cfg-cap').checked;
+            config.maskDistrict = document.getElementById('cfg-loc').checked;
+
+            setTimeout(() => {
+                // Process
+                processedData = applyAnonymization(rawData);
+                const m = calculateMetrics(rawData, processedData);
+                metrics = m;
+                
+                // Update UI
+                renderTable();
+                renderMetrics();
+                
+                // Reset Button
+                btn.innerHTML = originalText;
+                lucide.createIcons();
+            }, 500);
+        }
+
+        function switchView(viewName) {
+            if(viewName === 'app') {
+                document.getElementById('landing-view').classList.add('hidden');
+                document.getElementById('app-view').classList.remove('hidden');
+                document.getElementById('app-view').classList.add('flex');
+                
+                // Init App Data if empty
+                if(rawData.length === 0) {
+                    rawData = generateData(20);
+                    processedData = [...rawData]; // Clone
+                    runProcess(); // Initial Run
+                }
+            } else {
+                document.getElementById('landing-view').classList.remove('hidden');
+                document.getElementById('app-view').classList.add('hidden');
+                document.getElementById('app-view').classList.remove('flex');
+            }
+        }
+
+        function switchTab(tabName) {
+            if(tabName === 'data') {
+                document.getElementById('panel-data').classList.remove('hidden');
+                document.getElementById('panel-data').classList.add('flex');
+                document.getElementById('panel-report').classList.add('hidden');
+                document.getElementById('panel-report').classList.remove('flex');
+                
+                document.getElementById('tab-data').className = "tab-btn px-4 py-2 text-sm font-medium rounded-lg bg-white text-blue-900 shadow-sm";
+                document.getElementById('tab-report').className = "tab-btn px-4 py-2 text-sm font-medium rounded-lg text-blue-100 hover:bg-blue-800";
+            } else {
+                document.getElementById('panel-data').classList.add('hidden');
+                document.getElementById('panel-data').classList.remove('flex');
+                document.getElementById('panel-report').classList.remove('hidden');
+                document.getElementById('panel-report').classList.add('flex');
+
+                document.getElementById('tab-data').className = "tab-btn px-4 py-2 text-sm font-medium rounded-lg text-blue-100 hover:bg-blue-800";
+                document.getElementById('tab-report').className = "tab-btn px-4 py-2 text-sm font-medium rounded-lg bg-white text-blue-900 shadow-sm";
+                updateChart(); // Redraw chart to fit container
+            }
+        }
+
+        // Listener for Slider UI Update
+        document.getElementById('cfg-age').addEventListener('input', (e) => {
+            const val = e.target.value;
+            document.getElementById('age-val').innerText = val == 0 ? "Exact" : `Bin: ${val}y`;
+        });
+
+        // Initialize Icons
+        lucide.createIcons();
+
+    </script>
+</body>
+</html>
