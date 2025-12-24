@@ -96,7 +96,7 @@ Privacy–Utility Tradeoff	Quantified analytically
 The application is hosted using GitHub Pages and runs entirely in the browser.
 
 🔗 Live URL:
-https://<your-github-username>.github.io/nss-safe-data-tool/
+https://dhanvind360.github.io/vedakavach_6129/
 
 🚀 Getting Started
 Option 1: Run Online
